@@ -8,7 +8,7 @@ public class Palindrome {
 			if (isPalindrome(s))
 				System.out.println("Палиндром");
 			else
-				System.out.println("Нет, не Палиндром =З");
+				System.out.println("Нет, не Палиндром");
 		}
 	}
 
