@@ -43,7 +43,7 @@ public class FractalExplorer {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			String cmd = e.getActionCommand();
-			if (cmd.equals("Ресет")) {
+			if (cmd.equals("Сброс")) {
 				jpgImg.clearImage();
 				geni.getInitialRange(vsblRange);
 				drawFractal();
@@ -105,12 +105,12 @@ public class FractalExplorer {
 	}
 
 	private void createAndShowGUI() {
-		JFrame f = new JFrame("ФРАКТАЛ ФАКТОРИАЛ");
+		JFrame f = new JFrame("Лабораторная работа 5");
 		JComboBox<FractalGenerator> combo = new JComboBox<FractalGenerator>();
 		
 		f.setLayout(new BorderLayout());
 		f.add(jpgImg, BorderLayout.CENTER);
-		JButton b = new JButton("Ресет");
+		JButton b = new JButton("Сброс");
 		JPanel p2 = new JPanel();
 		JButton b2 = new JButton("Скрин");
 		f.add(b, BorderLayout.SOUTH);

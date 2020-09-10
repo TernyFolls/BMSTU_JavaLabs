@@ -30,7 +30,7 @@ public class Mandelbrot extends FractalGenerator {
 	
 	@Override
 	public String toString() {
-		return "Бутерброда";
+		return "Мандельброта";
 	}
 
 }

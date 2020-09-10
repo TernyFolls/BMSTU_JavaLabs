@@ -31,6 +31,6 @@ public class BurningShip extends FractalGenerator {
 
 	@Override
 	public String toString() {
-		return "Шляпа";
+		return "Горящий корабль";
 	}
 }

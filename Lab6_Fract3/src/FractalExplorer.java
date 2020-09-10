@@ -76,7 +76,7 @@ public class FractalExplorer {
 					try {
 						ImageIO.write((RenderedImage) jpgImg.getImg(), png, choozer.getSelectedFile());
 					} catch (Exception ex) {
-						JOptionPane.showMessageDialog(choozer.getParent(), ex.getMessage(), "Ты чё за лал ваще",
+						JOptionPane.showMessageDialog(choozer.getParent(), ex.getMessage(), "Оштбка сохранения",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
@@ -109,7 +109,7 @@ public class FractalExplorer {
 ////
 
 	private void createAndShowGUI() {
-		JFrame f = new JFrame("ФРАКТАЛ ФАКТОРИАЛ");
+		JFrame f = new JFrame("Лабораторная работа 6");
 		combo = new JComboBox<FractalGenerator>();
 
 		f.setLayout(new BorderLayout());

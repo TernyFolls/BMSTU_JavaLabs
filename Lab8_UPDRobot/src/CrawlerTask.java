@@ -27,7 +27,7 @@ public class CrawlerTask implements Runnable {
 
 	public void getContent(URLDepthPair obj) throws Exception {
 		try (Socket mySocket = new Socket(obj.hostNameString(), 80)) {
-			mySocket.setSoTimeout(5000);
+			mySocket.setSoTimeout(15000);
 			try (PrintWriter out = new PrintWriter(mySocket.getOutputStream(), true)) {
 				out.println("GET " + obj.pathNameString() + " HTTP/1.1");
 				out.println("Host: " + obj.hostNameString());
