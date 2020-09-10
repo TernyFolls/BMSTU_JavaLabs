@@ -1,3 +1,5 @@
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Image;
@@ -17,7 +19,7 @@ import javax.swing.JPanel;
 public class Road extends JPanel implements ActionListener, Runnable {
 
 	int score = 0;
-	
+
 	Timer mainTimer = new Timer(20, this);
 
 	Image img = new ImageIcon("res/bg_road.png").getImage();
@@ -49,7 +51,8 @@ public class Road extends JPanel implements ActionListener, Runnable {
 	}
 
 	public void paint(Graphics g) {
-
+		g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+		g.setColor(new Color(255, 100, 100));
 		g = (Graphics2D) g;
 
 		g.drawImage(img, (int) p.layer1, 0, null);
@@ -64,6 +67,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		g.drawImage(p.img, (int) p.x, (int) p.y, null);
 		g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y + p.img.getHeight(null) / 3,
 				p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
+		g.drawString("Score: " + score, 1300, 100);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -97,12 +101,12 @@ public class Road extends JPanel implements ActionListener, Runnable {
 
 					if (!isInterrupted()) {
 						Thread.sleep(100);
-						System.out.println(score += p.v);
+						score += p.v;
 					} else {
 						throw new InterruptedException();
-					
+
 					}
-					
+
 				} catch (InterruptedException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
