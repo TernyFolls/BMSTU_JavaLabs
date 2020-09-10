@@ -16,7 +16,7 @@ public class Crawler {
 	public static void urlSearch(URLDepthPair linkAndDepth)
 			throws UnknownHostException, MalformedURLException, IOException {
 		try (Socket mySocket = new Socket(linkAndDepth.hostNameString(), 80)) {
-			mySocket.setSoTimeout(5000);
+			mySocket.setSoTimeout(4000);
 			try (PrintWriter out = new PrintWriter(mySocket.getOutputStream(), true)) {
 				out.println("GET " + linkAndDepth.pathNameString() + " HTTP/1.1");
 				out.println("Host: " + linkAndDepth.hostNameString());
