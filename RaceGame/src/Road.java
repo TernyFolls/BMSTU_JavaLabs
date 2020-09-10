@@ -16,6 +16,8 @@ import javax.swing.JPanel;
 
 public class Road extends JPanel implements ActionListener, Runnable {
 
+	int score = 0;
+	
 	Timer mainTimer = new Timer(20, this);
 
 	Image img = new ImageIcon("res/bg_road.png").getImage();
@@ -74,7 +76,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 
 				enemiesFactory.interrupt();
 				scoreCounter.interrupt();
-				JOptionPane.showMessageDialog(null, "WIN!");
+				JOptionPane.showMessageDialog(null, "      Game over\nYour score: " + score);
 				System.exit(1);
 			}
 			// || p.hitbox().intersects(carItem.hitbox())
@@ -89,7 +91,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 	public class Score extends Thread implements Runnable {
 		@Override
 		public void run() {
-			int score = 0;
+
 			while (true) {
 				try {
 
