@@ -19,7 +19,7 @@ public class Lab1 {
 			throw new Exception("Одинаковые точки");
 		}
 
-		System.out.println((float)computeArea(a1, a2, a3));
+		System.out.println("Площадь: \t" + (float)computeArea(a1, a2, a3));
 
 	}
 
@@ -54,17 +54,12 @@ public class Lab1 {
 
 	public static double computeArea(Point3d a1, Point3d a2, Point3d a3) {
 		double p = ((a1.distanceTo(a2) + a2.distanceTo(a3) + a1.distanceTo(a3)));
-		System.out.println(p);
+		System.out.println("Периметр: \t" + p);
 		p = p / 2;
-		System.out.println(p);
+		System.out.println("Полупериметр: \t" + p);
 		return Math.sqrt(p * (p - a1.distanceTo(a2)) * (p - a2.distanceTo(a3)) * (p - a1.distanceTo(a3)));
 	}
 }
-
-
-
-
-
 
 //private static float round(float number, int scale) {
 //    int pow = 10;
