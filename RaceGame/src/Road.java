@@ -61,12 +61,12 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		while (i.hasNext()) {
 			Enemy e = i.next();
 			g.drawImage(e.img, (int) e.x, (int) e.y, null);
-			g.drawRect((int) e.x + e.img.getWidth(null) / 4, (int) e.y + e.img.getHeight(null) / 3,
-					e.img.getWidth(null) / 2, e.img.getHeight(null) / 3);
+			//g.drawRect((int) e.x + e.img.getWidth(null) / 4, (int) e.y + e.img.getHeight(null) / 3,
+				//	e.img.getWidth(null) / 2, e.img.getHeight(null) / 3);
 		}
 		g.drawImage(p.img, (int) p.x, (int) p.y, null);
-		g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y + p.img.getHeight(null) / 3,
-				p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
+		//g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y + p.img.getHeight(null) / 3,
+		//		p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
 		g.drawString("Score: " + score, 1150, 100);
 	}
 
@@ -143,7 +143,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 			Random rand = new Random();
 			try {
 				// Создание врагов
-				Thread.sleep(rand.nextInt(500) + 2000);
+				Thread.sleep(rand.nextInt(500) + 4000);
 				enemies.add(new Enemy(1400, rand.nextInt(100) + 400, rand.nextInt(46) + 30, rand.nextInt(2), this));
 				// enemies.add(new Enemy(1200, 200, rand.nextInt(80) + 20, this));
 

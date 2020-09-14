@@ -35,7 +35,7 @@ public class Enemy {
 	}
 
 	public void changeIco() {
-		img = new ImageIcon("res/kaboom.png").getImage();
+		img = new ImageIcon("res/kaboomE.png").getImage();
 	}
 
 	public void move() {
