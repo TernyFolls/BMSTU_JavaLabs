@@ -40,8 +40,8 @@ public class Player {
 	public void move() {
 		s += v;
 		v += dv;
-		if (v <= 0)
-			v = 0;
+		if (v <= 7)
+			v = 7;
 		if (v >= MAX_V) {
 			v -= 1;
 		}
@@ -76,6 +76,7 @@ public class Player {
 		img = new ImageIcon("res/kaboomP.png").getImage();
 		isCrashPlay = true;
 	}
+
 
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();

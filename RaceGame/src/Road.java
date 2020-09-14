@@ -68,6 +68,8 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		//g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y + p.img.getHeight(null) / 3,
 		//		p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
 		g.drawString("Score: " + score, 1150, 100);
+		g.drawString("Speed: " + (int)(p.v * 3.5), 100, 100);
+		g.drawString("km\\h", 235, 100);
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -87,14 +89,14 @@ public class Road extends JPanel implements ActionListener, Runnable {
 							System.err.println("Столкновение");
 							// carItem.changeIco();
 							carItem.isKaboomed = true;
-							carItem.crash();
+							carItem.crash(true);
 							break;
 						}
 					}
 				}
 				if (p.hitbox().intersects(carItem.hitbox())) {
 					p.crash();
-					carItem.crash();
+					carItem.crash(false);
 					//
 
 					//

@@ -11,6 +11,7 @@ public class Enemy {
 	int diff;
 	boolean direction;
 	boolean isKaboomed = false;
+	boolean fuse = false;
 
 	Image img = new ImageIcon("res/enemy.png").getImage();
 	Road road;
@@ -34,11 +35,12 @@ public class Enemy {
 		return x;
 	}
 
-	public void changeIco() {
-		img = new ImageIcon("res/kaboomE.png").getImage();
-	}
+//	public void crash2() {
+//		img = new ImageIcon("res/kaboom2.png").getImage();
+//	}
 
 	public void move() {
+
 		x = x - road.p.v + v;
 		if (diff == 1) {
 			if (y < Player.MAX_TOP) {
@@ -47,13 +49,22 @@ public class Enemy {
 			if (y > Player.MAX_BOT) {
 				direction = true;
 			}
-
-			y += (direction ? -1 : 1) * 6;
+			if (!isKaboomed) {
+				y += (direction ? -1 : 1) * 6;
+			}
 		}
 	}
 
-	public void crash() {
-		changeIco();
-		v = v * (-1);
+	public void crash(boolean x) {
+		if (!fuse) {
+			img = x ? new ImageIcon("res/kaboom2.png").getImage() : new ImageIcon("res/kaboomE.png").getImage();
+			fuse = true;
+		}
+		if (v < 10) {
+			v = 0;
+		} else {
+			v = v * (-0.01);
+		}
 	}
+
 }
