@@ -48,9 +48,9 @@ public class Player {
 		}
 
 		if (v >= MAX_V - 40) {
-			y -= 0.1 * Math.pow(2, 0.1 * v);
+			y -= 0.1 * v;
 			if (sw) {
-				y += 0.2 * Math.pow(2, 0.1 * v);
+				y += 0.2 * v;
 			}
 			sw = !sw;
 		}
@@ -75,7 +75,8 @@ public class Player {
 	
 	public void crash() {
 		//compile
-		img = new ImageIcon(getClass().getClassLoader().getResource("res/kaboomP.png")).getImage();
+		//img = new ImageIcon(getClass().getClassLoader().getResource("res/kaboomP.png")).getImage();
+		img = new ImageIcon("res/kaboomP.png").getImage();
 		isCrashPlay = true;
 	}
 

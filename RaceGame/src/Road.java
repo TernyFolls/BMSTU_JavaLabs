@@ -20,7 +20,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 
 	int score = 0;
 
-	Timer mainTimer = new Timer(20, this);
+	Timer mainTimer = new Timer(13, this);
 
 	//compile
 	//Image img = new ImageIcon(getClass().getClassLoader().getResource("res/bg_road.png")).getImage();
@@ -54,7 +54,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 	}
 
 	public void paint(Graphics g) {
-		g.setFont(new Font("TimesRoman", Font.ITALIC, 25));
+		g.setFont(new Font("Arial", Font.ITALIC, 25));
 		g.setColor(new Color(255, 100, 100));
 		g = (Graphics2D) g;
 
