@@ -10,6 +10,7 @@ public class Enemy {
 	double v;
 	int diff;
 	boolean direction;
+	boolean isKaboomed = false;
 
 	Image img = new ImageIcon("res/enemy.png").getImage();
 	Road road;
@@ -26,13 +27,17 @@ public class Enemy {
 	public Rectangle hitbox() {
 		return new Rectangle((int) x + img.getWidth(null) / 4, (int) y + img.getHeight(null) / 4,
 				img.getWidth(null) / 2, img.getHeight(null) / 2);
-		
+
 	}
-	
+
 	public double getX() {
 		return x;
 	}
-	
+
+	public void changeIco() {
+		img = new ImageIcon("res/kaboom.png").getImage();
+	}
+
 	public void move() {
 		x = x - road.p.v + v;
 		if (diff == 1) {
@@ -47,4 +52,8 @@ public class Enemy {
 		}
 	}
 
+	public void crash() {
+		changeIco();
+		v = v * (-1);
+	}
 }

@@ -67,29 +67,51 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		g.drawImage(p.img, (int) p.x, (int) p.y, null);
 		g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y + p.img.getHeight(null) / 3,
 				p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
-		g.drawString("Score: " + score, 1300, 100);
+		g.drawString("Score: " + score, 1150, 100);
 	}
 
 	public void actionPerformed(ActionEvent e) {
-		p.move();
-		Iterator<Enemy> i = enemies.iterator();
-		while (i.hasNext()) {
-			Enemy carItem = i.next();
-			carItem.move();
-			if (p.hitbox().intersects(carItem.hitbox())) {
+		if (!p.isCrashPlay) {
+			p.move();
+			Iterator<Enemy> i = enemies.iterator();
+			while (i.hasNext()) {
+				Enemy carItem = i.next();
+				carItem.move();
+				Iterator<Enemy> j = enemies.iterator();
+				while (j.hasNext()) {
+					Enemy car2 = j.next();
+					if (car2 != carItem) {
+						if (car2.hitbox().intersects(carItem.hitbox())) {
+							car2.x = -3500;
+							// carItem.x = -3500;
+							System.err.println("Столкновение");
+							// carItem.changeIco();
+							carItem.isKaboomed = true;
+							carItem.crash();
+							break;
+						}
+					}
+				}
+				if (p.hitbox().intersects(carItem.hitbox())) {
+					p.crash();
+					carItem.crash();
+					//
 
-				enemiesFactory.interrupt();
-				scoreCounter.interrupt();
-				JOptionPane.showMessageDialog(null, "      Game over\nYour score: " + score);
-				System.exit(1);
-			}
-			// || p.hitbox().intersects(carItem.hitbox())
-			if (carItem.getX() <= -3000) {
-				i.remove();
-			}
+					//
+				}
+				// || p.hitbox().intersects(carItem.hitbox())
+				if (carItem.getX() <= -3000) {
+					i.remove();
+				}
 
+			}
+			repaint();
+		} else {
+			enemiesFactory.interrupt();
+			scoreCounter.interrupt();
+			JOptionPane.showMessageDialog(null, "      Game over\nYour score: " + score);
+			System.exit(1);
 		}
-		repaint();
 	}
 
 	public class Score extends Thread implements Runnable {
@@ -121,7 +143,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 			Random rand = new Random();
 			try {
 				// Создание врагов
-				Thread.sleep(rand.nextInt(500) + 4000);
+				Thread.sleep(rand.nextInt(500) + 2000);
 				enemies.add(new Enemy(1400, rand.nextInt(100) + 400, rand.nextInt(46) + 30, rand.nextInt(2), this));
 				// enemies.add(new Enemy(1200, 200, rand.nextInt(80) + 20, this));
 
