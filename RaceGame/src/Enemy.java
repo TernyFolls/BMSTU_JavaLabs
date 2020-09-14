@@ -12,8 +12,10 @@ public class Enemy {
 	boolean direction;
 	boolean isKaboomed = false;
 	boolean fuse = false;
-
+	//compile
+	//Image img = new ImageIcon(getClass().getClassLoader().getResource("res/enemy.png")).getImage();
 	Image img = new ImageIcon("res/enemy.png").getImage();
+	
 	Road road;
 
 	public Enemy(int x, int y, int v, int diff, Road road) {
@@ -57,7 +59,10 @@ public class Enemy {
 
 	public void crash(boolean x) {
 		if (!fuse) {
+			//compile
+			//img = x ? new ImageIcon(getClass().getClassLoader().getResource("res/kaboom2.png")).getImage() : new ImageIcon(getClass().getClassLoader().getResource("res/kaboomE.png")).getImage();
 			img = x ? new ImageIcon("res/kaboom2.png").getImage() : new ImageIcon("res/kaboomE.png").getImage();
+			
 			fuse = true;
 		}
 		if (v < 10) {

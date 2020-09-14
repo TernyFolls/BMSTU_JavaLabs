@@ -14,9 +14,10 @@ public class Player {
 	public static final double SHAKE = 5;
 	public static final double COFF = 3;
 	
-	
+	//compile
+	//Image img = new ImageIcon(getClass().getClassLoader().getResource("res/player.png")).getImage();
 	Image img = new ImageIcon("res/player.png").getImage();
-
+		
 	boolean isCrashPlay = false;
 	boolean sw = false;
 	double v = 0;
@@ -73,7 +74,8 @@ public class Player {
 	}
 	
 	public void crash() {
-		img = new ImageIcon("res/kaboomP.png").getImage();
+		//compile
+		img = new ImageIcon(getClass().getClassLoader().getResource("res/kaboomP.png")).getImage();
 		isCrashPlay = true;
 	}
 
@@ -88,11 +90,17 @@ public class Player {
 		}
 		if (key == KeyEvent.VK_LEFT) {
 			dy = 11;
+			//compile
+			//img = new ImageIcon(getClass().getClassLoader().getResource("res/player_left.png")).getImage();
 			img = new ImageIcon("res/player_left.png").getImage();
+			
 		}
 		if (key == KeyEvent.VK_RIGHT) {
 			dy = -11;
+			//compile
+			//img = new ImageIcon(getClass().getClassLoader().getResource("res/player_right.png")).getImage();
 			img = new ImageIcon("res/player_right.png").getImage();
+			
 		}
 	}
 
@@ -103,6 +111,8 @@ public class Player {
 		}
 		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT) {
 			dy = 0;
+			//compile
+			//img = new ImageIcon(getClass().getClassLoader().getResource("res/player.png")).getImage();
 			img = new ImageIcon("res/player.png").getImage();
 		}
 	}

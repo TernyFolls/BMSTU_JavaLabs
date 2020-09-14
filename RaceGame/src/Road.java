@@ -22,8 +22,11 @@ public class Road extends JPanel implements ActionListener, Runnable {
 
 	Timer mainTimer = new Timer(20, this);
 
+	//compile
+	//Image img = new ImageIcon(getClass().getClassLoader().getResource("res/bg_road.png")).getImage();
 	Image img = new ImageIcon("res/bg_road.png").getImage();
-
+	
+	
 	Player p = new Player();
 
 	Thread enemiesFactory = new Thread(this);
@@ -51,7 +54,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 	}
 
 	public void paint(Graphics g) {
-		g.setFont(new Font("TimesRoman", Font.PLAIN, 25));
+		g.setFont(new Font("TimesRoman", Font.ITALIC, 25));
 		g.setColor(new Color(255, 100, 100));
 		g = (Graphics2D) g;
 
@@ -67,7 +70,9 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		g.drawImage(p.img, (int) p.x, (int) p.y, null);
 		//g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y + p.img.getHeight(null) / 3,
 		//		p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
+
 		g.drawString("Score: " + score, 1150, 100);
+		g.setColor(new Color(0, 0, 255));
 		g.drawString("Speed: " + (int)(p.v * 3.5), 100, 100);
 		g.drawString("km\\h", 235, 100);
 	}
