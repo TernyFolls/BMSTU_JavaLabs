@@ -45,7 +45,7 @@ public class Crawler {
 
 	public static boolean isContainsList(LinkedList<URLDepthPair> obj, String str) {
 		for (URLDepthPair i : obj) {
-			if (i.bestContains().equals(str)) {
+			if (i.getUrl().equals(str)) {
 				return true;
 			}
 		}

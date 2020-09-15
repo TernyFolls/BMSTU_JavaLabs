@@ -35,7 +35,7 @@ public class URLDepthPair {
 		return depth;
 	}
 	
-	public String bestContains() {
+	public String getUrl() {
 		return (this.url);
 	}
 

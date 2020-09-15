@@ -100,8 +100,11 @@ public class Player {
 			//compile
 			//img = new ImageIcon(getClass().getClassLoader().getResource("res/player_right.png")).getImage();
 			img = new ImageIcon("res/player_right.png").getImage();
-			
 		}
+		if (key == KeyEvent.VK_ESCAPE) {
+			System.exit(1);
+		}
+		
 	}
 
 	public void keyReleased(KeyEvent e) {
