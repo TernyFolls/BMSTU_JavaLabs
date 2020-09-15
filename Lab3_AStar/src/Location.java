@@ -26,7 +26,8 @@ public class Location {
 		Location loc = (Location) obj;
 		return loc.xCoord == xCoord && loc.yCoord == yCoord;
 	}
-//Умирает при не самых известных обстоятельствах, использовать метод выше
+	//TODO
+	//Умирает при не самых известных обстоятельствах, использовать метод выше
 	public boolean equals2(Location obj) {
 		return obj.xCoord == xCoord && obj.yCoord == yCoord;
 	}

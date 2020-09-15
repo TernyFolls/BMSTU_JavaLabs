@@ -76,7 +76,7 @@ public class FractalExplorer {
 					try {
 						ImageIO.write((RenderedImage) jpgImg.getImg(), png, choozer.getSelectedFile());
 					} catch (Exception ex) {
-						JOptionPane.showMessageDialog(choozer.getParent(), ex.getMessage(), "Оштбка сохранения",
+						JOptionPane.showMessageDialog(choozer.getParent(), ex.getMessage(), "Ошибка сохранения",
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
