@@ -5,9 +5,9 @@ import java.util.Random;
 import javax.swing.ImageIcon;
 
 public class Enemy {
-	double x;
-	double y;
-	double v;
+	float x;
+	float y;
+	float v;
 	int diff;
 	boolean direction;
 	boolean isKaboomed = false;
@@ -68,7 +68,7 @@ public class Enemy {
 		if (v < 10) {
 			v = 0;
 		} else {
-			v = v * (-0.01);
+			v = v * (-0.01f);
 		}
 	}
 

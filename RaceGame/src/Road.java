@@ -18,21 +18,20 @@ import javax.swing.JPanel;
 
 public class Road extends JPanel implements ActionListener, Runnable {
 
-	int score = 0;
+	private int score = 0;
 
-	Timer mainTimer = new Timer(13, this);
+	// compile
+	// Image img = new
+	// ImageIcon(getClass().getClassLoader().getResource("res/bg_road.png")).getImage();
+	private Image img = new ImageIcon("res/bg_road.png").getImage();
 
-	//compile
-	//Image img = new ImageIcon(getClass().getClassLoader().getResource("res/bg_road.png")).getImage();
-	Image img = new ImageIcon("res/bg_road.png").getImage();
-	
-	
-	Player p = new Player();
+	public Player p = new Player();
 
-	Thread enemiesFactory = new Thread(this);
-	Thread scoreCounter = new Thread(new Score());
+	private Timer mainTimer = new Timer(13, this);
+	private Thread enemiesFactory = new Thread(this);
+	private Thread scoreCounter = new Thread(new Score());
 
-	List<Enemy> enemies = new ArrayList<Enemy>();
+	private List<Enemy> enemies = new ArrayList<Enemy>();
 
 	public Road() {
 		mainTimer.start();
@@ -40,7 +39,15 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		scoreCounter.start();
 		addKeyListener(new MyKeyAdapter());
 		setFocusable(true);
+	}
 
+	private void restart() {
+		enemiesFactory.start();
+		scoreCounter.start();
+		enemies.clear();
+		score = 0;
+		p.x = 30f;
+		p.y = 300f;
 	}
 
 	private class MyKeyAdapter extends KeyAdapter {
@@ -64,16 +71,18 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		while (i.hasNext()) {
 			Enemy e = i.next();
 			g.drawImage(e.img, (int) e.x, (int) e.y, null);
-			//g.drawRect((int) e.x + e.img.getWidth(null) / 4, (int) e.y + e.img.getHeight(null) / 3,
-				//	e.img.getWidth(null) / 2, e.img.getHeight(null) / 3);
+			// g.drawRect((int) e.x + e.img.getWidth(null) / 4, (int) e.y +
+			// e.img.getHeight(null) / 3,
+			// e.img.getWidth(null) / 2, e.img.getHeight(null) / 3);
 		}
 		g.drawImage(p.img, (int) p.x, (int) p.y, null);
-		//g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y + p.img.getHeight(null) / 3,
-		//		p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
+		// g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y +
+		// p.img.getHeight(null) / 3,
+		// p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
 
 		g.drawString("Score: " + score, 1150, 100);
 		g.setColor(new Color(0, 0, 255));
-		g.drawString("Speed: " + (int)(p.v * 3.5), 100, 100);
+		g.drawString("Speed: " + (int) (p.v * 3.5), 100, 100);
 		g.drawString("km\\h", 235, 100);
 	}
 
@@ -117,6 +126,8 @@ public class Road extends JPanel implements ActionListener, Runnable {
 			enemiesFactory.interrupt();
 			scoreCounter.interrupt();
 			JOptionPane.showMessageDialog(null, "      Game over\nYour score: " + score);
+
+			// restart();
 			System.exit(1);
 		}
 	}
@@ -137,8 +148,9 @@ public class Road extends JPanel implements ActionListener, Runnable {
 					}
 
 				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					System.out.println("Thread to count score has been stopped");
+					Thread.currentThread().interrupt();
+					break;
 				}
 			}
 		}
@@ -155,8 +167,9 @@ public class Road extends JPanel implements ActionListener, Runnable {
 				// enemies.add(new Enemy(1200, 200, rand.nextInt(80) + 20, this));
 
 			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				System.out.println("Thread to make enemy has been stopped");
+				Thread.currentThread().interrupt();
+				break;
 			}
 		}
 

@@ -7,35 +7,34 @@ import javax.swing.JOptionPane;
 
 public class Player {
 
-	
-	public static final double MAX_V = 80;
-	public static final double MAX_TOP = 200;
-	public static final double MAX_BOT = 600;
-	public static final double SHAKE = 5;
-	public static final double COFF = 3;
-	
-	//compile
-	//Image img = new ImageIcon(getClass().getClassLoader().getResource("res/player.png")).getImage();
+	public static final float MAX_V = 80f;
+	public static final float MAX_TOP = 200f;
+	public static final float MAX_BOT = 600f;
+	public static final float SHAKE = 5f;
+	public static final float COFF = 3f;
+
+	// compile
+	// Image img = new
+	// ImageIcon(getClass().getClassLoader().getResource("res/player.png")).getImage();
 	Image img = new ImageIcon("res/player.png").getImage();
-		
+
 	boolean isCrashPlay = false;
 	boolean sw = false;
-	double v = 0;
-	double dv = 0;
-	double dy = 0;
-	double s = 0;
+	float v = 0f;
+	float dv = 0f;
+	float dy = 0f;
+	float s = 0f;
 
-	
-	double x = 30;
-	double y = 300;
+	float x = 30f;
+	float y = 300f;
 
-	double layer1 = 0;
-	double layer2 = 1514;
+	float layer1 = 0f;
+	float layer2 = 1514f;
 
 	public Rectangle hitbox() {
 		return new Rectangle((int) x + img.getWidth(null) / 4, (int) y + img.getHeight(null) / 4,
 				img.getWidth(null) / 2, img.getHeight(null) / 2);
-		
+
 	}
 
 	public void move() {
@@ -72,36 +71,38 @@ public class Player {
 		layer1 -= v;
 		layer2 -= v;
 	}
-	
+
 	public void crash() {
-		//compile
-		//img = new ImageIcon(getClass().getClassLoader().getResource("res/kaboomP.png")).getImage();
+		// compile
+		// img = new
+		// ImageIcon(getClass().getClassLoader().getResource("res/kaboomP.png")).getImage();
 		img = new ImageIcon("res/kaboomP.png").getImage();
 		isCrashPlay = true;
 	}
 
-
 	public void keyPressed(KeyEvent e) {
 		int key = e.getKeyCode();
 		if (key == KeyEvent.VK_A) {
-			dv = 0.5;
+			dv = 0.5f;
 		}
 		if (key == KeyEvent.VK_S) {
-			dv = -1.5;
+			dv = -1.5f;
 		}
 		if (key == KeyEvent.VK_LEFT) {
 			dy = 11;
-			//compile
-			//img = new ImageIcon(getClass().getClassLoader().getResource("res/player_left.png")).getImage();
+			// compile
+			// img = new
+			// ImageIcon(getClass().getClassLoader().getResource("res/player_left.png")).getImage();
 			img = new ImageIcon("res/player_left.png").getImage();
-			
+
 		}
 		if (key == KeyEvent.VK_RIGHT) {
 			dy = -11;
-			//compile
-			//img = new ImageIcon(getClass().getClassLoader().getResource("res/player_right.png")).getImage();
+			// compile
+			// img = new
+			// ImageIcon(getClass().getClassLoader().getResource("res/player_right.png")).getImage();
 			img = new ImageIcon("res/player_right.png").getImage();
-			
+
 		}
 	}
 
@@ -112,8 +113,9 @@ public class Player {
 		}
 		if (key == KeyEvent.VK_LEFT || key == KeyEvent.VK_RIGHT) {
 			dy = 0;
-			//compile
-			//img = new ImageIcon(getClass().getClassLoader().getResource("res/player.png")).getImage();
+			// compile
+			// img = new
+			// ImageIcon(getClass().getClassLoader().getResource("res/player.png")).getImage();
 			img = new ImageIcon("res/player.png").getImage();
 		}
 	}
