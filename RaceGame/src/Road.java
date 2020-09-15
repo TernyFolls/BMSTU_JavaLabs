@@ -19,14 +19,16 @@ import javax.swing.JPanel;
 public class Road extends JPanel implements ActionListener, Runnable {
 
 	int score = 0;
+	int tutorX = -300;
+	int tutorY = 600;
 
 	Timer mainTimer = new Timer(13, this);
 
-	//compile
-	//Image img = new ImageIcon(getClass().getClassLoader().getResource("res/bg_road.png")).getImage();
+	// compile
+	// Image img = new
+	// ImageIcon(getClass().getClassLoader().getResource("res/bg_road.png")).getImage();
 	Image img = new ImageIcon("res/bg_road.png").getImage();
-	
-	
+
 	Player p = new Player();
 
 	Thread enemiesFactory = new Thread(this);
@@ -64,17 +66,29 @@ public class Road extends JPanel implements ActionListener, Runnable {
 		while (i.hasNext()) {
 			Enemy e = i.next();
 			g.drawImage(e.img, (int) e.x, (int) e.y, null);
-			//g.drawRect((int) e.x + e.img.getWidth(null) / 4, (int) e.y + e.img.getHeight(null) / 3,
-				//	e.img.getWidth(null) / 2, e.img.getHeight(null) / 3);
+			// g.drawRect((int) e.x + e.img.getWidth(null) / 4, (int) e.y +
+			// e.img.getHeight(null) / 3,
+			// e.img.getWidth(null) / 2, e.img.getHeight(null) / 3);
 		}
 		g.drawImage(p.img, (int) p.x, (int) p.y, null);
-		//g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y + p.img.getHeight(null) / 3,
-		//		p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
+		// g.drawRect((int) p.x + p.img.getWidth(null) / 4, (int) p.y +
+		// p.img.getHeight(null) / 3,
+		// p.img.getWidth(null) / 2, p.img.getHeight(null) / 3);
 
 		g.drawString("Score: " + score, 1150, 100);
 		g.setColor(new Color(0, 0, 255));
-		g.drawString("Speed: " + (int)(p.v * 3.5), 100, 100);
+		g.drawString("Speed: " + (int) (p.v * 3.5), 100, 100);
 		g.drawString("km\\h", 235, 100);
+		if (tutorX < 2000) {
+			g.setColor(new Color(0, 255, 0));
+			g.drawString("A to Acceleration", tutorX++, tutorY);
+			g.setColor(new Color(255, 0, 0));
+			g.drawString("S to Stop", tutorX++, tutorY+20);
+			g.setColor(new Color(0, 0, 255));
+			g.drawString("Left to Left", tutorX++, tutorY+40);
+			g.setColor(new Color(255, 255, 0));
+			g.drawString("Right to Right", tutorX++, tutorY+60);
+		}
 	}
 
 	public void actionPerformed(ActionEvent e) {
@@ -117,7 +131,8 @@ public class Road extends JPanel implements ActionListener, Runnable {
 			enemiesFactory.interrupt();
 			scoreCounter.interrupt();
 			JOptionPane.showMessageDialog(null, "      Game over\nYour score: " + score);
-			System.exit(1);
+			//System.exit(1);
+			
 		}
 	}
 
@@ -150,7 +165,7 @@ public class Road extends JPanel implements ActionListener, Runnable {
 			Random rand = new Random();
 			try {
 				// Создание врагов
-				Thread.sleep(rand.nextInt(500) + 4000);
+				Thread.sleep(rand.nextInt(500) + 3000);
 				enemies.add(new Enemy(1400, rand.nextInt(100) + 400, rand.nextInt(46) + 30, rand.nextInt(2), this));
 				// enemies.add(new Enemy(1200, 200, rand.nextInt(80) + 20, this));
 

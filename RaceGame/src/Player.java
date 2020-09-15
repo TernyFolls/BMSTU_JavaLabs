@@ -35,7 +35,6 @@ public class Player {
 	public Rectangle hitbox() {
 		return new Rectangle((int) x + img.getWidth(null) / 4, (int) y + img.getHeight(null) / 4,
 				img.getWidth(null) / 2, img.getHeight(null) / 2);
-		
 	}
 
 	public void move() {

@@ -19,7 +19,7 @@ public class Lab1 {
 			throw new Exception("Одинаковые точки");
 		}
 
-		System.out.println("Площадь: \t" + (float)computeArea(a1, a2, a3));
+		System.out.println("Площадь: \t" + (float) computeArea(a1, a2, a3));
 
 	}
 

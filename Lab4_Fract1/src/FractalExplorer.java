@@ -17,7 +17,7 @@ public class FractalExplorer {
 	private FractalGenerator geni = new Mandelbrot();
 
 	private Rectangle2D.Double vsblRange;
-	
+
 	public FractalExplorer(int x) {
 		side = x;
 		vsblRange = new Rectangle2D.Double();
@@ -25,8 +25,8 @@ public class FractalExplorer {
 		jpgImg = new JImageDisplay(x, x);
 
 	}
-	
-	class ActiveLisner implements ActionListener{
+
+	class ActiveLisner implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -39,14 +39,15 @@ public class FractalExplorer {
 			}
 		}
 	}
-	class MouseClass extends MouseAdapter{
-	    public void mouseClicked(MouseEvent e) {
-	    	System.out.println(e);
-	    	double xCoord = FractalGenerator.getCoord(vsblRange.x, vsblRange.x + vsblRange.width, side, e.getX());
+
+	class MouseClass extends MouseAdapter {
+		public void mouseClicked(MouseEvent e) {
+			System.out.println(e);
+			double xCoord = FractalGenerator.getCoord(vsblRange.x, vsblRange.x + vsblRange.width, side, e.getX());
 			double yCoord = FractalGenerator.getCoord(vsblRange.y, vsblRange.y + vsblRange.height, side, e.getY());
 			geni.recenterAndZoomRange(vsblRange, xCoord, yCoord, 0.3);
 			drawFractal();
-	    }
+		}
 	}
 
 	private void drawFractal() {
