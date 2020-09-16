@@ -8,7 +8,7 @@ public class Main {
 		for(int xCoord = 0; xCoord < 40; xCoord++) {
 			for(int yCoord = 0; yCoord < 30; yCoord++) {
 				
-				final int prime = 31;
+				final int prime = 32;
 			    int result = 1;
 			    result = prime * result + xCoord;
 			    result = prime * result + yCoord;
