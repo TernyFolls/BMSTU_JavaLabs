@@ -80,7 +80,6 @@ public class FractalExplorer {
 								JOptionPane.ERROR_MESSAGE);
 					}
 				}
-
 			}
 		}
 	}
